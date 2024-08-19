@@ -1,2 +1,9 @@
 ﻿  Main.cpp
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(14,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(20,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(22,30): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(28,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(30,30): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(44,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Eagle\source\repos\Homework13\Main.cpp(52,26): warning C4018: <: несоответствие типов со знаком и без знака
   Homework13.vcxproj -> C:\Users\Eagle\source\repos\Homework13\x64\Debug\Homework13.exe

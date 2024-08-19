@@ -1,54 +1,57 @@
 #include <iostream>
 #include "Helpers.h"
 #include <string>
+#include <time.h>
 
-void FindOddNumbers(int Limit, bool IsOdd)
-{
-	int i;
-	if (!IsOdd)
-	{
-		i = 2;
-		std::cout << "Even numbers in a given limit\n";
-	}
-	else
-	{
-		i = 1;
-		std::cout << "Odd numbers in a given limit\n";
-
-	}
-
-	for (i; i <= Limit; i += 2)
-	{
-		std::cout << i << std::endl;
-	}
-
-}
 
 int main()
 {  
-	int n;
-	bool IsOdd;
-	
-	std::cout << "input Limit\n";
-	std::cin >> n;
-	std::cout << "Is odd? (0/1)\n";
-	std::cin >> IsOdd;
+	std::cout << "Input N" << std::endl;
+    int n;
+    std::cin >> n;
 
-	FindOddNumbers(n, IsOdd);
+    int** numbers{ new int* [n] {} };  // выделяем память под двухмерный массив
+    for (unsigned i{}; i < n; i++)
+    {
+        numbers[i] = new int[n] {};
+    }
 
-	/*float a, b;
+    // вводим данные
+    for (unsigned i{}; i < n; i++)
+    {
+        for (unsigned j{}; j < n; j++)
+        {
+             numbers[i][j] = i+j;
+        }
+    }
+    // вывод данных
+    for (unsigned i{}; i < n; i++)
+    {
+        for (unsigned j{}; j < n; j++)
+        {
+            std::cout << numbers[i][j] << "\t";
+        }
+        std::cout << std::endl;
+    }
 
-	std::cout << "input a: ";
-	std::cin >> a;
-	std::cout << "input b: ";
-	std::cin >> b;
+    struct tm buf;
+    time_t t = time(NULL);
+    localtime_s(&buf, &t);
+    int index = buf.tm_mday % 5;
+    int sum = 0;
 
-	double result = squaresum(a, b);
-	std::cout << "The square of the sum  = " << result << std::endl;
 
-	std::string str;
-	str = "Hello Skillbox";
+    for (unsigned i{}; i < n; i++)
+    {
+       sum += numbers[index][i];
+    }
 
-	std::cout << "String value is '" << str << "'. String length is '" << str.length() << "'. First symbol is '" << str[0] << "'. Last symbol is '" << str[str.length() - 1] << "'."; */
+    std::cout << "the sum of the line " << index + 1 << " is equal to " << sum;
 
+    //освобождаем память
+    for (unsigned i{}; i < n; i++)
+    {
+        delete[] numbers[i];
+    }
+    delete[] numbers;
 }
