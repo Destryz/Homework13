@@ -1,57 +1,34 @@
 #include <iostream>
-#include "Helpers.h"
-#include <string>
-#include <time.h>
+#include <math.h>
 
+
+class Vector
+{
+public:
+	Vector() : x(0), y(0), z(0)
+	{}
+	Vector(double _x, double _y, double _z) : x(_x), y(_y), z(_z)
+	{}
+	void Show()
+	{
+		std::cout << '\n' << "The lenght of vector is " << sqrt( std::pow(x,2) + std::pow(y, 2) + std::pow(z, 2));
+	}
+private:
+	double x;
+	double y;
+	double z;
+};
 
 int main()
 {  
-	std::cout << "Input N" << std::endl;
-    int n;
-    std::cin >> n;
+	double x, y, z;
+	std::cout << "input X value ";
+	std::cin >> x;
+	std::cout << "input Y value ";
+	std::cin >> y;
+	std::cout << "input Z value ";
+	std::cin >> z;
 
-    int** numbers{ new int* [n] {} };  // выделяем память под двухмерный массив
-    for (unsigned i{}; i < n; i++)
-    {
-        numbers[i] = new int[n] {};
-    }
-
-    // вводим данные
-    for (unsigned i{}; i < n; i++)
-    {
-        for (unsigned j{}; j < n; j++)
-        {
-             numbers[i][j] = i+j;
-        }
-    }
-    // вывод данных
-    for (unsigned i{}; i < n; i++)
-    {
-        for (unsigned j{}; j < n; j++)
-        {
-            std::cout << numbers[i][j] << "\t";
-        }
-        std::cout << std::endl;
-    }
-
-    struct tm buf;
-    time_t t = time(NULL);
-    localtime_s(&buf, &t);
-    int index = buf.tm_mday % 5;
-    int sum = 0;
-
-
-    for (unsigned i{}; i < n; i++)
-    {
-       sum += numbers[index][i];
-    }
-
-    std::cout << "the sum of the line " << index + 1 << " is equal to " << sum;
-
-    //освобождаем память
-    for (unsigned i{}; i < n; i++)
-    {
-        delete[] numbers[i];
-    }
-    delete[] numbers;
+	Vector v(x, y, z);
+	v.Show();
 }
