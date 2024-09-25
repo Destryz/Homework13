@@ -1,34 +1,65 @@
 #include <iostream>
 #include <math.h>
+#include <string.h>
 
 
-class Vector
+class Player
 {
 public:
-	Vector() : x(0), y(0), z(0)
-	{}
-	Vector(double _x, double _y, double _z) : x(_x), y(_y), z(_z)
-	{}
-	void Show()
+	void SetName()
 	{
-		std::cout << '\n' << "The lenght of vector is " << sqrt( std::pow(x,2) + std::pow(y, 2) + std::pow(z, 2));
+		std::cout << "Input player name" << '\n';
+		std::cin >> name;
+	}
+	void SetScore()
+	{
+		std::cout << "Input player score" << '\n';
+		std::cin >> score;
+	}
+	int GetScore()
+	{
+		return score;
+	}
+	std::string GetName()
+	{
+		return name;
 	}
 private:
-	double x;
-	double y;
-	double z;
+	std::string name;
+	int score;
 };
 
 int main()
 {  
-	double x, y, z;
-	std::cout << "input X value ";
-	std::cin >> x;
-	std::cout << "input Y value ";
-	std::cin >> y;
-	std::cout << "input Z value ";
-	std::cin >> z;
+	int n;
+	std::cout << "Input count of players" << '\n';
+	std::cin >> n;
 
-	Vector v(x, y, z);
-	v.Show();
+	Player *players{ new Player[n] };
+	
+	for (int i = 0; i < n; i++)
+	{
+		players[i].SetName();
+		players[i].SetScore();
+
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < (n-1); j++) {
+			if (players[j].GetScore() < players[j + 1].GetScore()) {
+				Player bufplayer = players[j]; 
+				players[j] = players[j + 1]; 
+				players[j + 1] = bufplayer; 
+			}
+		}
+	}
+
+	std::cout << "an array in sorted form" << '\n';
+
+	for (int i = 0; i < n; i++)
+	{
+		std::cout << "Name: " << players[i].GetName() << " || Score: " << players[i].GetScore() <<'\n';
+	}
+
+	delete[] players;
 }
