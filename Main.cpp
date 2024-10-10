@@ -41,12 +41,29 @@ public:
 
 int main()
 {  
-	Animal* p = new Dog;
-	p->Voice();
+	std::cout << "Input array size";
+	size_t size;
+	std::cin>>size;
+	Animal** animals = new Animal * [size] {}; 
 
-	Animal* p1 = new Cat;
-	p1->Voice();
+	for (size_t i = 0; i < size; ++i) {
+		if (i % 3 == 0) {
+			animals[i] = new Bird;
+		}
+		else if(i % 2 == 0) {
+			animals[i] = new Cat;
+		}
+		else {
+			animals[i] = new Dog;
+		}
+	}
 
-	Animal* p2 = new Bird;
-	p2->Voice();
+	for (size_t i = 0; i < size; ++i) {
+		animals[i]->Voice();
+	}
+
+	for (size_t i = 0; i < size; ++i) {
+		delete animals[i];
+	}
+	delete[] animals;
 }
