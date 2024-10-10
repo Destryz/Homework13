@@ -3,63 +3,50 @@
 #include <string.h>
 
 
-class Player
+class Animal
 {
 public:
-	void SetName()
+	virtual void Voice()
 	{
-		std::cout << "Input player name" << '\n';
-		std::cin >> name;
+		std::cout << "An animal voice here" << '\n';
 	}
-	void SetScore()
+};
+
+class Dog : public Animal
+{
+public:
+	void Voice() override
 	{
-		std::cout << "Input player score" << '\n';
-		std::cin >> score;
+		std::cout << "Woof!" << '\n';
 	}
-	int GetScore()
+};
+
+class Cat : public Animal
+{
+public:
+	void Voice() override
 	{
-		return score;
+		std::cout << "Meow!" << '\n';
 	}
-	std::string GetName()
+};
+
+class Bird : public Animal
+{
+public:
+	void Voice() override
 	{
-		return name;
+		std::cout << "Chik!" << '\n';
 	}
-private:
-	std::string name;
-	int score;
 };
 
 int main()
 {  
-	int n;
-	std::cout << "Input count of players" << '\n';
-	std::cin >> n;
+	Animal* p = new Dog;
+	p->Voice();
 
-	Player *players{ new Player[n] };
-	
-	for (int i = 0; i < n; i++)
-	{
-		players[i].SetName();
-		players[i].SetScore();
+	Animal* p1 = new Cat;
+	p1->Voice();
 
-	}
-
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < (n-1); j++) {
-			if (players[j].GetScore() < players[j + 1].GetScore()) {
-				Player bufplayer = players[j]; 
-				players[j] = players[j + 1]; 
-				players[j + 1] = bufplayer; 
-			}
-		}
-	}
-
-	std::cout << "an array in sorted form" << '\n';
-
-	for (int i = 0; i < n; i++)
-	{
-		std::cout << "Name: " << players[i].GetName() << " || Score: " << players[i].GetScore() <<'\n';
-	}
-
-	delete[] players;
+	Animal* p2 = new Bird;
+	p2->Voice();
 }
