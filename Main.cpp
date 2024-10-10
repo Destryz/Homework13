@@ -35,7 +35,7 @@ class Bird : public Animal
 public:
 	void Voice() override
 	{
-		std::cout << "Chik!" << '\n';
+		std::cout << "Tweet!" << '\n';
 	}
 };
 
